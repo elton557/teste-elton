@@ -1,0 +1,245 @@
+#cloud-config
+
+users:
+  - name: "rondineli.saad"
+    groups:
+      - "sudo"
+      - "docker"
+      - "core"
+    ssh-authorized-keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCouMbkv3MctcRHT4RtGIyS+sclcTaktWXpkrysFIrghTGVDMyK2e2B739CXf26Ylq+QyvonNr8zgoymm5RdnIzlgzEBf6ZRZhqwewm9sF16d9uAvQBzp/UzhNgf6cy7iOnk/nElOA+sbcrJYKI+elcBMi9fZpg/PwU4UiRjKs87YYnM5rBjI3Q0dODg+h9v0DQdIPUZAhTAFx17/rQ9nnCGqZoo88SP9oyP41qPpB3S8FXGrS3t/bl8czpwOO1AT4XFoz9df/OBuT21Cbk04RggGkOwlVW9KFnxHQhN9zRD07wXjEBKEO2ym5r2uGwkRYElHA6JB5CIheYriGbC3WP"
+
+  - name: "anderson.attilio"
+    groups:
+      - "sudo"
+      - "docker"
+      - "core"
+    ssh-authorized-keys:      
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD7Dq/WaKS3Fsj4AaGJvWedhNzQPng5uW4sYRPf3pYIhYAqO8DbUJd8SLwqnOfGmeTZqPSAfM/ZsCXxLh3NK+KdIJVkoet05oE3SSqc+rGE9MceMPSC8qMLrLt6x/eWMIARkS7G7EkDdkdpw1uhlPLzHfJWqLypKSn35fAUS6WCd1T18/meVc3Vs8JwhNZ9PN+RISfC+OGUNC5tYKHHOCLdp1yLarOomaiYQhQMWHN5354cExVnSkFdYv5Nsk1ZBkeASGerTaeovkgXP0mdzfmss+qa3W/WEklt4AYvNxiGVhLfE7eJkAoLOU6b4VyZZRl6Wlj6Kfr9P97WT0mjIbJD"
+
+
+  - name: "elton.gomes"
+    groups:
+      - "sudo"
+      - "docker"
+      - "core"
+    ssh-authorized-keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDdKrPBQufks1zfNIofXRR/1O5JKOdrIc6zdiFVEVjS2HtDWdyhDRM4EaM4Ld3qkerwtbO9++jhKFlYeXgL3CeLlbE0lnrXZqaTV4Kp/7Ryu+1S5fA3Ebm/RMG4PhYwDEzwoRBN3NCA0AGzA6r9hl/Y6+ky9IQQfQ3YCPQCUIkyySZf3LApTTJfsMlYf2ozQN7lSH96Bxmz3/PfqWGHd/690Urpmcv3drdj6k/ObMR3AxhZQP3ryJ3952kSgVzxnS0sL5W8tXcrAYwmS6Zpi5JXESOHBRTghvMEnwJR0KZhMv8eiH2Z77wv6KgKT+VIq7uCUuRpjNRlm4l8Zspr2ExjcHeS42EskZXf7rqq4nNB07Tw8CVzuyQR5AlR7R0YKpqwjghh1di+JqstWQokCfSZn0lhVSFW93yw548EnVykWx2alyR2C/b5jwFjgzysB8eYsMdGtRtH0cEsgw+g454zpBionEIK/XKP3UGvNI7CnZ3GxzP26yKt+pJSKncn3WbQofIm/sFN2qpFM56C45yB+F2kGFOXraQFxS5H91YTxqhSPw6Dft9gKrFP5FcJFzz513TbcxQwebE3eqmOrVTzKmbaSMF66GR1BqT37mpFhFODAWp91YC/vpWdyGOeBQAB4IC0MGxt4gIUHXukbZBdiLoXl/7U4uv6sEfqYTa4vQ=="
+
+  - name: "rundeck"
+    groups:
+      - "sudo"
+      - "docker"
+      - "core"
+    ssh-authorized-keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDqEgPbZnjSvmUnXuEKI7waAzNzHUk5nwI4wNuovvZshI3szPADdtrdZ2Apc+L6t+f5/0/hee3HtawaOGudo3hliBjv5pAbylFoBwyxTLDgLs0Kjk2ggAd+OMDEInc6esVmT2EiXdJBkUoQfajZn48bUwfYSmN86cQhvrBU+ZK5LgUqHKJOpgde20aoR6ohK4GTxFAmtrMHKWdQL7buq2kOuv2HFb7GyKALeiLJzu7voV1i/3ubbbqIAatStZF+KJfWF5ktVaw/R0QShYJQIqfQywBMaXP2gwav8k9szLsAjGKKKjgaljbVVXR0gVqYynIVW+sWWA61pHhz3xYF37m9 rundeck@rundeck.scielo.org"
+
+write_files:
+  - path: /etc/modules-load.d/iscsi.conf
+    content: iscsi_tcp
+ca_certs:
+  remove-defaults: false # If true, removes all default CAs and only uses CAs provided in the trusted key
+  trusted:
+    - |
+    -----BEGIN CERTIFICATE-----
+    MIIGMTCCBRmgAwIBAgISBGixhLS22bxdzYM0lMhu6EurMA0GCSqGSIb3DQEBCwUA
+    MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
+    EwJSMzAeFw0yMTA5MDIyMTExMDJaFw0yMTEyMDEyMTExMDFaMBUxEzARBgNVBAMT
+    CnJldnR1ci5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDA+u1H
+    z90IIwl+yZbYN39Q4SJ6ECkmUYi9ExSyE6b9vfPlX+7lzF8/8XJBmP+aMCdUdx91
+    3jDA3hcb93lRiRfAZX30TOK0a6ig60y9kjyka1wTj79DfoBqoarT9jn3mkKSOQ7u
+    S/SCree5bLqzZ6a+gZmZr005KKV8AtbKwiO7CCqD/wygGo5+FzSXQPHki7K8ZZas
+    kpKq2d8T053ml5xDydAkbma0xfxTcY3w/BTCMKal3NT4arRJ+N5kMwU3V9NVVQhN
+    Monvc3WjyawDRplYb9gGNCqnaB7qGCrNmFwSvAWvI2/7NeQsmbrjCd0TvbaLcJOK
+    C719VOd01LWGPG8rAgMBAAGjggNcMIIDWDAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0l
+    BBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYE
+    FIfvmX3Z8D59WNJX82J0kzJ6WctrMB8GA1UdIwQYMBaAFBQusxe3WFbLrlAJQOYf
+    r52LFMLGMFUGCCsGAQUFBwEBBEkwRzAhBggrBgEFBQcwAYYVaHR0cDovL3IzLm8u
+    bGVuY3Iub3JnMCIGCCsGAQUFBzAChhZodHRwOi8vcjMuaS5sZW5jci5vcmcvMIIB
+    KQYDVR0RBIIBIDCCARyCESouYXBwcy5zY2llbG8ub3JnghsqLmF2YWxpYWNhb2Jv
+    b2tzLnNjaWVsby5vcmeCESouYmxvZy5zY2llbG8ub3JnghIqLmJvb2tzLnNjaWVs
+    by5vcmeCFiouY2FyaWJiZWFuLnNjaWVsby5vcmeCFCouY2l0ZWRieS5zY2llbG8u
+    b3JnghEqLmxhYnMuc2NpZWxvLm9yZ4IRKi5vcGFjLnNjaWVsby5vcmeCESoucHJv
+    Yy5zY2llbG8ub3JnggwqLnNjaWVsby5vcmeCEyouc2VhcmNoLnNjaWVsby5vcmeC
+    ECouc3NtLnNjaWVsby5vcmeCDyoud3Auc2NpZWxvLm9yZ4IKcmV2dHVyLm9yZ4IK
+    c2NpZWxvLm9yZzBMBgNVHSAERTBDMAgGBmeBDAECATA3BgsrBgEEAYLfEwEBATAo
+    MCYGCCsGAQUFBwIBFhpodHRwOi8vY3BzLmxldHNlbmNyeXB0Lm9yZzCCAQUGCisG
+    AQQB1nkCBAIEgfYEgfMA8QB2AJQgvB6O1Y1siHMfgosiLA3R2k1ebE+UPWHbTi9Y
+    TaLCAAABe6iQvMoAAAQDAEcwRQIhAMy6BIS22B6Fyv4zoV920F2t1JjU1gwtWTOY
+    HTnfLx/WAiBtcitty+U0TIu15UtNEVFIlcuzNFtRjPMXck9y+Z7rqwB3APZclC/R
+    dzAiFFQYCDCUVo7jTRMZM7/fDC8gC8xO8WTjAAABe6iQvoYAAAQDAEgwRgIhANOL
+    Uu7ddDjtJG+dxeSg0mOlmjqbuQPmFZ+OBqgdV1EtAiEAjsuJhL7GIE/U22ycCnv4
+    zw3K9HdNbAFJ6QClfkm074wwDQYJKoZIhvcNAQELBQADggEBAJmPKUIEAUsxQNxa
+    MyMdsk22tBlz4p2M/ABkxul0jXmI50L68N+iZePZ1tZ5Uh+/HMWNwjS3ipAmMPak
+    ae7AHuLn/F6fOrRcctiL+R9IA43SXSu4ySdc1bW8+AZH5juK2fl1n44JB1+N5YXm
+    Tjtgfte8sxs8y9MXXgZY8db7e4WJ5OD+nI/CmTF3vC+g3nyhZ2omJkkhAHU2u3Rv
+    Ggp+0TdPcPIk1aVRZ9dQDpcwvgm/IfrfRsHYmbiwIINuUjPftxVqae4riec1mYc9
+    Bh7N4uddsTKDMRiYtMAQjeecFf9zjlF3WOovl8L+F+k5p38ohNDx2deUS9QqSn3o
+    tmQCz3U=
+    -----END CERTIFICATE-----
+    - |
+      -----BEGIN CERTIFICATE-----
+      MIIFFjCCAv6gAwIBAgIRAJErCErPDBinU/bWLiWnX1owDQYJKoZIhvcNAQELBQAw
+      TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
+      cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjAwOTA0MDAwMDAw
+      WhcNMjUwOTE1MTYwMDAwWjAyMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3Mg
+      RW5jcnlwdDELMAkGA1UEAxMCUjMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+      AoIBAQC7AhUozPaglNMPEuyNVZLD+ILxmaZ6QoinXSaqtSu5xUyxr45r+XXIo9cP
+      R5QUVTVXjJ6oojkZ9YI8QqlObvU7wy7bjcCwXPNZOOftz2nwWgsbvsCUJCWH+jdx
+      sxPnHKzhm+/b5DtFUkWWqcFTzjTIUu61ru2P3mBw4qVUq7ZtDpelQDRrK9O8Zutm
+      NHz6a4uPVymZ+DAXXbpyb/uBxa3Shlg9F8fnCbvxK/eG3MHacV3URuPMrSXBiLxg
+      Z3Vms/EY96Jc5lP/Ooi2R6X/ExjqmAl3P51T+c8B5fWmcBcUr2Ok/5mzk53cU6cG
+      /kiFHaFpriV1uxPMUgP17VGhi9sVAgMBAAGjggEIMIIBBDAOBgNVHQ8BAf8EBAMC
+      AYYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMBIGA1UdEwEB/wQIMAYB
+      Af8CAQAwHQYDVR0OBBYEFBQusxe3WFbLrlAJQOYfr52LFMLGMB8GA1UdIwQYMBaA
+      FHm0WeZ7tuXkAXOACIjIGlj26ZtuMDIGCCsGAQUFBwEBBCYwJDAiBggrBgEFBQcw
+      AoYWaHR0cDovL3gxLmkubGVuY3Iub3JnLzAnBgNVHR8EIDAeMBygGqAYhhZodHRw
+      Oi8veDEuYy5sZW5jci5vcmcvMCIGA1UdIAQbMBkwCAYGZ4EMAQIBMA0GCysGAQQB
+      gt8TAQEBMA0GCSqGSIb3DQEBCwUAA4ICAQCFyk5HPqP3hUSFvNVneLKYY611TR6W
+      PTNlclQtgaDqw+34IL9fzLdwALduO/ZelN7kIJ+m74uyA+eitRY8kc607TkC53wl
+      ikfmZW4/RvTZ8M6UK+5UzhK8jCdLuMGYL6KvzXGRSgi3yLgjewQtCPkIVz6D2QQz
+      CkcheAmCJ8MqyJu5zlzyZMjAvnnAT45tRAxekrsu94sQ4egdRCnbWSDtY7kh+BIm
+      lJNXoB1lBMEKIq4QDUOXoRgffuDghje1WrG9ML+Hbisq/yFOGwXD9RiX8F6sw6W4
+      avAuvDszue5L3sz85K+EC4Y/wFVDNvZo4TYXao6Z0f+lQKc0t8DQYzk1OXVu8rp2
+      yJMC6alLbBfODALZvYH7n7do1AZls4I9d1P4jnkDrQoxB3UqQ9hVl3LEKQ73xF1O
+      yK5GhDDX8oVfGKF5u+decIsH4YaTw7mP3GFxJSqv3+0lUFJoi5Lc5da149p90Ids
+      hCExroL1+7mryIkXPeFM5TgO9r0rvZaBFOvV2z0gp35Z0+L4WPlbuEjN/lxPFin+
+      HlUjr8gRsI3qfJOQFy/9rKIJR0Y/8Omwt/8oTWgy1mdeHmmjk7j1nYsvC9JSQ6Zv
+      MldlTTKB3zhThV1+XWYp6rjd5JW1zbVWEkLNxE7GJThEUG3szgBVGP7pSWTUTsqX
+      nLRbwHOoq7hHwg==
+      -----END CERTIFICATE-----
+    - |
+      -----BEGIN CERTIFICATE-----
+      MIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/
+      MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT
+      DkRTVCBSb290IENBIFgzMB4XDTIxMDEyMDE5MTQwM1oXDTI0MDkzMDE4MTQwM1ow
+      TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
+      cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwggIiMA0GCSqGSIb3DQEB
+      AQUAA4ICDwAwggIKAoICAQCt6CRz9BQ385ueK1coHIe+3LffOJCMbjzmV6B493XC
+      ov71am72AE8o295ohmxEk7axY/0UEmu/H9LqMZshftEzPLpI9d1537O4/xLxIZpL
+      wYqGcWlKZmZsj348cL+tKSIG8+TA5oCu4kuPt5l+lAOf00eXfJlII1PoOK5PCm+D
+      LtFJV4yAdLbaL9A4jXsDcCEbdfIwPPqPrt3aY6vrFk/CjhFLfs8L6P+1dy70sntK
+      4EwSJQxwjQMpoOFTJOwT2e4ZvxCzSow/iaNhUd6shweU9GNx7C7ib1uYgeGJXDR5
+      bHbvO5BieebbpJovJsXQEOEO3tkQjhb7t/eo98flAgeYjzYIlefiN5YNNnWe+w5y
+      sR2bvAP5SQXYgd0FtCrWQemsAXaVCg/Y39W9Eh81LygXbNKYwagJZHduRze6zqxZ
+      Xmidf3LWicUGQSk+WT7dJvUkyRGnWqNMQB9GoZm1pzpRboY7nn1ypxIFeFntPlF4
+      FQsDj43QLwWyPntKHEtzBRL8xurgUBN8Q5N0s8p0544fAQjQMNRbcTa0B7rBMDBc
+      SLeCO5imfWCKoqMpgsy6vYMEG6KDA0Gh1gXxG8K28Kh8hjtGqEgqiNx2mna/H2ql
+      PRmP6zjzZN7IKw0KKP/32+IVQtQi0Cdd4Xn+GOdwiK1O5tmLOsbdJ1Fu/7xk9TND
+      TwIDAQABo4IBRjCCAUIwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYw
+      SwYIKwYBBQUHAQEEPzA9MDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1
+      c3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3YzAfBgNVHSMEGDAWgBTEp7Gkeyxx
+      +tvhS5B1/8QVYIWJEDBUBgNVHSAETTBLMAgGBmeBDAECATA/BgsrBgEEAYLfEwEB
+      ATAwMC4GCCsGAQUFBwIBFiJodHRwOi8vY3BzLnJvb3QteDEubGV0c2VuY3J5cHQu
+      b3JnMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9E
+      U1RST09UQ0FYM0NSTC5jcmwwHQYDVR0OBBYEFHm0WeZ7tuXkAXOACIjIGlj26Ztu
+      MA0GCSqGSIb3DQEBCwUAA4IBAQAKcwBslm7/DlLQrt2M51oGrS+o44+/yQoDFVDC
+      5WxCu2+b9LRPwkSICHXM6webFGJueN7sJ7o5XPWioW5WlHAQU7G75K/QosMrAdSW
+      9MUgNTP52GE24HGNtLi1qoJFlcDyqSMo59ahy2cI2qBDLKobkx/J3vWraV0T9VuG
+      WCLKTVXkcGdtwlfFRjlBz4pYg1htmf5X6DYO8A4jqv2Il9DjXA6USbW1FzXSLr9O
+      he8Y4IWS6wY7bCkjCWDcRQJMEhg76fsO3txE+FiYruq9RUWhiF1myv4Q6W+CyBFC
+      Dfvp7OOGAN6dEOM4+qR9sdjoSYKEBpsr6GtPAQw4dy753ec5
+      -----END CERTIFICATE-----
+
+
+####GIVE ME THE IP ADDRESS FROM ENS32 INTERFACE FOR BOTH####
+  - path: /etc/environment
+    permissions: 0644
+    content: |
+      COREOS_PUBLIC_IPV4=192.168.1.10
+      COREOS_PRIVATE_IPV4=192.168.1.10
+
+hostname: coreos-node27.scielo.org
+coreos:
+  units:
+    - name: vmtoolsd.service
+      command: start
+      content: |
+        [Unit]
+        Description=VMware Tools Agent
+        Documentation=http://open-vm-tools.sourceforge.net/
+        ConditionVirtualization=vmware
+
+        [Service]
+        ExecStartPre=/usr/bin/ln -sfT /usr/share/oem/vmware-tools /etc/vmware-tools
+        ExecStart=/usr/share/oem/bin/vmtoolsd
+        TimeoutStopSec=5
+
+
+    - name: oem-cloudinit.service
+      command: restart
+      runtime: yes
+      content: |
+        [Unit]
+        Description=Cloudinit from VMware Backdoor
+
+        [Service]
+        Type=oneshot
+        ExecStart=/usr/bin/coreos-cloudinit --oem=vmware
+
+    - name: disable-transparent-huge-pages.service
+      command: start
+      content: |
+        [Unit]
+        Description=Disable Transparent Huge Pages
+
+        [Service]
+        Type=oneshot
+        ExecStart=/usr/bin/sh -c "/usr/bin/echo "never" | tee /sys/kernel/mm/transparent_hugepage/enabled"
+        ExecStart=/usr/bin/sh -c "/usr/bin/echo "never" | tee /sys/kernel/mm/transparent_hugepage/defrag"
+
+        [Install]
+        WantedBy=multi-user.target
+
+    - name: 00-ens32.network
+      runtime: true
+      content: |
+        [Match]
+        Name=ens32
+
+        [Network]
+        DNS=192.168.1.222
+        Address=192.168.1.26/24
+        Gateway=192.168.1.71
+
+    - name: 20-dhcp.network
+      content: |
+        [Match]
+        Name=ens32
+
+        [Network]
+        DHCP=false
+
+    - name: rpc-statd.service
+      command: start
+      enable: true
+
+    - name: settimezone.service
+      command: start
+      content: |
+        [Unit]
+        Description=Set the time zone
+
+        [Service]
+        ExecStart=/usr/bin/timedatectl set-timezone America/Fortaleza
+        RemainAfterExit=yes
+        Type=oneshot
+
+   #Load Modules on boot
+   #Documentation: https://coreos.com/os/docs/latest/other-settings.html
+    - name: systemd-modules-load.service
+      command: restart
+
+###CHANGE THE COMMAND ATTRIBUTE TO start####
+   #Starting ISCSI Daemon
+    - name: iscsid.service
+      command: stop
+
+  oem:
+    bug-report-url: "https://github.com/coreos/bugs/issues"
+    id: vmware
+    name: VMWare
+    version-id: "9.10.0-r3"
+
+  update:
+    reboot-strategy: "off"
